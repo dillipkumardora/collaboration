@@ -1,0 +1,41 @@
+<div style="margin: 25px; margin-left: 20px; margin-bottom: 250px;" ng-init="friendCtrl.fetchusers();">
+    <h5>LOOK FOR NEW PEOPLE TO BEFRIEND</h5>Currently active users {{friendCtrl.countUsers}}
+    <hr>
+     <!-- Search bar comes here -->
+    <div  style="margin-left: 50px">
+      <form>
+        <div class="input-field item-search">
+          <input id="search" type="search" required style="display: inline" placeholder="Search for friend" ng-model="SearchBox">
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons" >close</i>
+        </div>
+      </form>
+    </div>
+    <!-- List of all site's members will come here-->
+    <div>
+        <div class="row" >
+            
+            <div class="col s4" ng-repeat="user in friendCtrl.userslist | filter : SearchBox" >
+
+                <div class="card">
+                    <div class="row">
+                        <div class="col s3" style="margin-top: 10px;">
+                             <img src="assets/img/{{user.profile}}" alt="" class="circle" width="120px;" height="120px;">
+                        </div>
+                        <div class="col s8 offset-s1" style="margin-top: 10px; margin-bottom: 10px;">
+                            <b><a href="#!/user/profile/{{user.id}}" style="color: #000;">{{user.firstname}} {{user.lastname}}</a></b>
+                            <p style="margin-top: 0px; margin-bottom: 0px;">{{user.username}}</p>
+                            <p style="margin-top: 0px; margin-bottom: 0px;">{{user.birthDate | date : 'MMMM, d y'}}</p>
+                            <p ng-if="user.gender == 'M'" style="margin-top: 0px; margin-bottom: 0px;">Male</p>
+                            <p ng-if="user.gender == 'F'" style="margin-top: 0px; margin-bottom: 0px;">Female</p>
+                            <button ng-if="!friendCtrl.hasSentRequest" class="teal darken-1 btn" ng-click="friendCtrl.sendRequest(user.id)">Add Friend</button>
+                            <button ng-if="friendCtrl.hasSentRequest" class="teal darken-1 btn disabled" ng-click="friendCtrl.sendRequest(user.id)">Add Friend</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

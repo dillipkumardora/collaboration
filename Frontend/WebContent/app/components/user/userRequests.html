@@ -1,0 +1,46 @@
+<div class="row" ng-init="requestCtrl.pendingUserList()">
+        <div style="margin-top: 25px; margin-left: 25px;">
+            <h5>New User Requests</h5>
+        </div>
+        <br /> <br />
+
+        <div style="margin-left: 25px; margin-bottom: 250px;">
+            <table class="highlight centered responsive-table">
+                <thead>
+                <tr>
+                    <th data-field="username">Username</th>
+                    <th data-field="firstname">First Name</th>
+                    <th data-field="lastname">Last Name</th>
+                    <th data-field="email">Email Id</th>
+                    <th data-field="dob">Date of Birth</th>
+                    <th data-field="gender">Gender</th>
+                    <th data-field="status">Status</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="user in requestCtrl.pendingUsers | orderBy : 'user.id'">
+                        <td>{{user.username}}</td>
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname}}</td>
+                        <td>{{user.emailId}}</td>
+                        <td>{{user.birthDate| date: short}}</td>
+                        <td>{{user.gender}}</td>
+                        
+                        <td> 
+                            <div class="switch">
+                            <label>
+                            Disable
+                            <input type="checkbox" ng-model="user.status" ng-change="requestCtrl.changeStatus(user.id)">
+                            <span class="lever"></span>
+                            Active
+                            </label>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                
+                </tbody>
+        </table>
+    </div>
+</div>

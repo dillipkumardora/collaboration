@@ -1,0 +1,40 @@
+<div class="row" ng-init="adminCtrl.fetchEventList();" >
+        <div style="margin-top: 25px; margin-left: 25px;">
+            <h5>Manage All Event</h5>
+        </div>
+        <br /> <hr />
+
+        <div style="margin-left: 25px; margin-bottom: 250px;">
+
+            <div class="card hoverable" style="width: 1300px;" ng-repeat="event in adminCtrl.eventsList">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s4">
+                            <span class="card-title activator grey-text text-darken-4 ">{{event.name}}</span>
+                            <p style="font-size: 13px;">Organised by {{event.username}} | {{event.postDate | date: 'MMMM,d y'}}</p><br>
+                        </div>
+                        <div class="col s3 offset-s5">
+                             <div class="center-align" style="margin-top: 10px;">
+                                <button type="submit" class="waves-effect waves-light btn-large" ng-click="requestCtrl.approveEvent(event.id)">EDIT</button>
+                                <button type="submit" class="waves-effect waves-light btn-large" ng-click="requestCtrl.approveEvent(event.id)">DELETE</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <p>{{event.description}}</p>
+                    <br>
+                    <div class="row">
+                    <div class="col m6">
+                        <p><b>Venue</b></p>
+                        <p>{{event.venue}}</p>
+                    </div>
+                    <div class="col m6">
+                        <p><b>Start Date</b> {{event.startDate | date: 'MMMM,d y'}}</p>
+                        <p><b>End Date</b> {{event.endDate | date: 'MMMM,d y'}}</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+    </div>
+</div>

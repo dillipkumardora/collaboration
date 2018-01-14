@@ -1,0 +1,20 @@
+<!-- Welcome message will come here -->
+        <div class="card-panel teal">
+          <marquee><span class="white-text">Welcome {{user.username}}</span></marquee>
+        </div>
+
+        <!--To view online friends -->
+        <div ng-init="userCtrl.fetchOnlineFriends()">
+        <span class="card-title right-align">Online Friends({{userCtrl.countOnlineFriends}})</span>
+        <ul class="collection">
+          <li class="collection-item avatar" ng-repeat="friend in userCtrl.myOnlineFriends">
+            <img src="assets/img/{{friend.profile}}" alt="" class="circle">
+            <span><a href="#!/chat/{{friend.id}}/{{friend.username}}" target="_blank" style="color: #000">{{friend.username}}</a></span>
+            <a href="#!" class="secondary-content tooltipped" data-position="bottom" data-delay="50" data-tooltip="message"><i class="material-icons">message</i></a>
+          </li>
+
+         
+        </ul>
+        </div>
+
+       

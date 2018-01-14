@@ -1,0 +1,164 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin: 20px 0;
+}
+body {
+    font-family: 'Merriweather', serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
+}
+  main {
+    flex: 1 0 auto;
+  }
+#register {
+    position: right;
+}
+#panel {
+     width: 450px;
+}
+#role {
+    margin-top: 10px;
+}
+#rolelabel {
+    font-size: 1.2rem;
+}
+input:not([type]), input[type=text], 
+input[type=password], input[type=email], 
+input[type=url], input[type=time], 
+input[type=date], input[type=datetime], 
+input[type=datetime-local], input[type=tel], 
+input[type=number], input[type=search], 
+textarea.materialize-textarea {
+    margin-bottom: 10px;
+}
+.row {
+    display: inline;
+}
+.brand-logo {
+    margin-left: 30px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+
+}
+.input-field input[type=search]:focus {
+    background-color: transparent;
+    color: #fff;
+}
+.input-field input[type=search]:focus+label i{
+    color: #fff;
+}
+.input-field input[type=search]:focus ~ .material-icons {
+    color: #fff;
+}
+::-webkit-input-placeholder {
+    color: #fff;
+}
+.help-block {
+    font-size: 12px;
+    display: inline;
+    color: red
+}
+#toast-container {
+    top: auto;
+    right: auto;
+    bottom: 10%;
+    left: 45%;
+    max-width: 86%;
+}
+
+.invalid-data {
+    color: #F44336;
+}
+
+input[type=text].invalid,
+input[type=password].invalid,
+input[type=email].invalid {
+
+    border-bottom: 1px solid #F44336;
+    box-shadow: 0 1px 0 0 #F44336;
+}
+
+input.ng-dirty.ng-invalid{
+    border-bottom: 1px solid #F44336;
+    box-shadow: 0 1px 0 0 #F44336;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active{
+    color: #4db6ac;
+}
+
+.tabs .tab a {
+     color: #4db6ac;
+}
+
+.tabs .indicator {
+    background-color: #4db6ac;
+}
+
+/*span.badge.new:after {
+    content: "";
+}*/
+
+.item-search ::-webkit-input-placeholder {
+    
+    color: #9e9e9e;
+}
+
+.item-search label.active i {
+     color: #9e9e9e;
+}
+
+ .item-search input[type=search]:focus+label i {
+     color: #9e9e9e;
+ }
+
+ .item-search input[type=search]:focus {
+     color: #9e9e9e;
+ }
+
+ .pagination li.active {
+     background-color: #4db6ac;
+ }
+
+ .breadcrumb {
+    color: #4db6ac; 
+ }
+
+ .breadcrumb:before {
+     color: #4db6ac; 
+ }
+
+ .breadcrumb:last-child {
+     color: #4db6ac;
+ }
+
+.chat-display {
+    height: 500px;
+    overflow-y: auto;
+}
+ taOptions.toolbar = [
+      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+      ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+      ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent'],
+      ['html', 'insertImage','insertLink', 'insertVideo', 'wordcount', 'charcount']
+  ];

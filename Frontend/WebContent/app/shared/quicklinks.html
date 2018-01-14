@@ -1,0 +1,24 @@
+<!-- Quick links to create blogs, forum topics, jobs and events -->
+<div class="fixed-action-btn horizontal" ng-if="authenticated">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">add</i>
+    </a>
+    <ul>
+        <li><a href="#!/blog/new" class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Blogs"><i class="material-icons">description</i></a></li>
+        <li ng-if="user.role != 'User' && user.role != 'Employer'"><a href="#!/forum/list" class="btn-floating yellow darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="Forums"><i class="material-icons">question_answer</i></a></li>
+        <li ng-if="user.role != 'User'"><a href="#!/job/new" class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="job"><i class="material-icons">work</i></a></li>
+        <li ng-if="user.role != 'User'"><a href="#!/event/new" class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Events"><i class="material-icons">today</i></a></li>
+    </ul>
+    <!-- Modal Structure -->
+        <div id="forumModal" class="modal">
+            <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+      
+   
+</div>

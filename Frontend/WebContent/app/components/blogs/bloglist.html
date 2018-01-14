@@ -1,0 +1,42 @@
+<div class="row" ng-init="blogCtrl.bloglist()">
+
+    <div class="col m9">
+
+      
+      <div class="col s12" style="margin-top: 25px;">
+        <a href="#!/user" class="breadcrumb">Home</a>
+        <a href="#!//blogs/all" class="breadcrumb">Blog List</a>
+      </div>
+    
+
+        <div class="card hoverable" style="margin-top: 75px;">
+            
+            <div ng-repeat="blogs in blogCtrl.bloglist | orderBy : '-id'">
+            <div style=" margin-left: 50px; padding-top: 40px; margin-right: 50px;">
+                <h4><a href="#!/blog/{{blogs.id}}" style="color: rgba(0, 0, 0, 0.87);">{{blogs.name}}</a></h4>
+                <a href="#">By {{blogs.userName}}</a>
+                <p>Posted on {{blogs.postDate | date: short}}</p>
+                <p class="truncate">{{blogs.description}}</p>
+                 <div class="card-action">
+                    <a  href="javascript:void(0)" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="views">Views {{blogs.noOfViews}}</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a  href="javascript:void(0)" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="likes">Likes {{blogs.noOfLikes}}</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a  href="javascript:void(0)" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="comments">Comments {{blogs.noOfComments}}</a>
+                    
+                 </div>
+            </div>
+            <hr>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col m3">
+         <div ng-include="'app/shared/rightSide.html'"></div>
+
+          <div style="margin: 25px auto 0 auto;">
+            <a href="#!/blog/new" class="waves-effect waves-light btn-large"><i class="material-icons right">description</i>CREATE YOUR BLOG</a>
+        </div>
+    </div>
+</div>

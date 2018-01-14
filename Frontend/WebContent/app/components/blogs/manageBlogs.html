@@ -1,0 +1,36 @@
+<div class="row" ng-init="adminCtrl.approvedBlogList()">
+  
+        <div style="margin-top: 25px; margin-left: 25px;">
+            <h5>Manage your blogs here</h5>
+        </div>
+        <br /> <br />
+
+        <div style="margin-left: 25px; margin-bottom: 250px;">
+            <table class="highlight centered responsive-table">
+                <thead>
+                <tr>
+                    <th data-field="id">Blog Id</th>
+                    <th data-field="name">Blog Name</th>
+                    <th data-field="authorname">Author Name</th>
+                    <th data-field="date">Published On</th>
+                    <th data-field="status">Options</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="blog in adminCtrl.approvedBlogList">
+                        <td>{{blog.id}}</td>
+                        <td><a href="#!/blog/{{blog.id}}" target="_blank">{{blog.name}}</a></td>
+                        <td>{{blog.userName}}</td>
+                        <td>{{blog.postDate | date: 'MMMM d, y'}}</td>
+                       <td> 
+                            <a class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons">mode_edit</i></a>
+                            <a class="waves-effect waves-light btn tooltipped red darken-4" data-position="bottom" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+
+    
+</div>

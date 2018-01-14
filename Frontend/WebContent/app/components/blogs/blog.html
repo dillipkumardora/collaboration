@@ -1,0 +1,119 @@
+<div class="row" ng-init="blogCtrl.viewBlog()">
+    <div class="col m9" style="margin-bottom: 50px;">
+
+        <div class="col s12" style="margin-top: 25px;">
+            <a href="#!/user" class="breadcrumb">Home</a>
+            <a href="#!/blogs/all" class="breadcrumb">Blog List</a>
+            <a href="#!/blog" class="breadcrumb">Blog</a>
+        </div>
+
+        <div style="margin-left: 20px; padding-top: 20px; padding-bottom: 40px; margin-right: 20px; margin-top: 75px;">
+            <div ng-if="blogCtrl.singleBlog.status == 'PENDING'">
+                 <div class="card hoverable" style="background-color: #ff0000">
+                    <marquee><span style="color: #fff; padding-left: 25px;">This blog's approval is still pending. Only you can see this blog. Once admin approves the blog 
+                        it will go online and you will be notified!</span></marquee>
+                </div>
+            </div>
+
+            <h4>{{blogCtrl.singleBlog.name}}</h4>  <!--Controllername.objectname.field -->
+            <p>Published By {{blogCtrl.singleBlog.userName}} | {{blogCtrl.singleBlog.postDate | date: 'MMMM d, y'}}</p>
+            <p>{{blogCtrl.singleBlog.description}}</p>
+
+            <a ng-if="blogCtrl.singleBlog.status == 'APPROVED'" class="waves-effect waves-light btn-large" style="margin-bottom: 20px;" ng-click="blogCtrl.likes(blogCtrl.singleBlog.id);"><i class="material-icons right">thumb_up</i>Like</a>
+            
+
+            <hr>
+
+        <!-- Blog Comments starts here -->
+        
+        <!-- Display this if no comments are available -->
+        <div  ng-if="blogCtrl.singleBlog.noOfComments == 0 ">
+           <div class="card hoverable" style="height: 200px;">
+                <h3 style="padding-top: 75px; padding-left: 250px;">No Comments Yet!</h3>
+           </div>
+        </div>
+        
+        <!-- Display this if comments are available -->
+        <div ng-if="blogCtrl.singleBlog.noOfComments != 0 ">
+
+            <h5><b>Comments ({{blogCtrl.singleBlog.noOfComments}})</b></h5>
+            <div class="row" ng-repeat="blogComment in blogCtrl.blogCommentList| orderBy : 'id'">
+                <div class="card hoverable">
+                    <div style=" padding-top: 40px; padding-bottom: 40px;">
+                        <div class="row">
+                            <div class="col m2" style="margin-top: 20px">
+                                <img src="assets/img/{{blogComment.userProfileId}}" alt="" class="circle" width="80px;">
+                            </div>
+                            <div class="col m10">
+                                <h4>{{blogComment.title}}</h4>
+                                <p>Commented by {{blogComment.username}} | Posted on : {{blogComment.commentDate | date : 'MMMM d, y'}}</p>
+                            </div>
+                        </div>
+                        <p style="margin-left: 20px; margin-right: 10px;">{{blogComment.blogComment}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+            <!--Section for leaving comment on blogs will come here-->
+            <div ng-if="blogCtrl.singleBlog.status == 'APPROVED'" style="padding-top: 20px; margin-bottom: 50px;">
+                <h4>Leave a comment</h4>
+                    <form id="newBlogComment" name="newBlogComment" ng-submit="blogCtrl.addBlogComment()" class="col s12">
+                        <input type="hidden" ng-model="blogCtrl.blogComment.id" />
+                        <input type="hidden" ng-model="blogCtrl.blogComment.blogId" />
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="title" type="text" class="validate" ng-model="blogCtrl.blogComment.title">
+                                <label for="title">Title</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="comment" class="materialize-textarea" ng-model="blogCtrl.blogComment.blogComment"></textarea>
+                                    <label for="comment">Comment</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button type="submit" class="waves-effect waves-light btn-large" style="margin-top: 10px; left: 20px;">Post</button>
+                        </div>
+                    </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="col m3">
+        
+        <div ng-include="'app/shared/rightSide.html'"></div>
+
+        <!-- Likes, views count will come here -->
+        <div style="border: 5px solid #4db6ac; height: 200px;" >
+            <div style="margin-top: 20px;" class="center-align">
+                <a ng-if="blogCtrl.singleBlog.noOfLikes != 1" href="#!" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="likes" 
+                        style="color: #4db6ac; font-size: 40px;">
+                            {{blogCtrl.singleBlog.noOfLikes}} Likes
+                        </a>
+                <a ng-if="blogCtrl.singleBlog.noOfLikes == 1" href="#!" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="likes" 
+                        style="color: #4db6ac; font-size: 40px;">
+                            {{blogCtrl.singleBlog.noOfLikes}} Like
+                        </a>
+            </div>
+
+            <div style="margin-top: 20px;" class="center-align">
+                <a href="#!" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="views" 
+                        style="color: #4db6ac; font-size: 40px;">
+                        {{blogCtrl.singleBlog.noOfViews}} Views
+                    </a>
+            </div>
+        </div>
+
+        <div style="margin: 25px auto 0 auto;">
+            <a href="#!/blog/new" class="waves-effect waves-light btn-large"><i class="material-icons right">description</i>CREATE YOUR BLOG</a>
+        </div>
+    </div>
+</div>

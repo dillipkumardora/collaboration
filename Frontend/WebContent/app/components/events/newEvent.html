@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col m9">
+        <div class="card hoverable" style="margin-bottom: 25px;">
+            <h3 style="padding-left: 20px; padding-top: 20px;">Create Event</h3>
+                <div class="row" >
+                <form id="newEvent" name="newEvent" ng-submit="eventCtrl.addEvent()" class="col s12" style="padding-bottom: 40px;">
+                <input type="hidden" ng-model="eventCtrl.event.id" />
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input id="name" type="text" class="validate" data-length="25" ng-model="eventCtrl.event.name">
+                            <label for="name">Event Name</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input id="venue" type="text" class="validate" data-length="100" ng-model="eventCtrl.event.venue">
+                            <label for="venue">Venue</label>
+                            </div>
+                        </div>
+
+                        <div class="row" >
+                            <div class="input-field col s12">
+                                <textarea id="description" class="materialize-textarea" ng-model="eventCtrl.event.description"></textarea>
+                                <label for="description">Event Description</label>
+                            </div>  
+                        </div>
+
+                         <div class="row">
+                             <div class="col s6">
+                                <div class="input-field">
+                                    <input id="startDate" name="startDate" type="text" class="datepicker" name="startDate"
+                                    ng-required="true" ng-model="eventCtrl.event.startDate">
+                                    <label for="startDate">Start Date</label>
+
+                                </div>
+                             </div>
+
+                             <div class="col s6">
+                                <div class="input-field">
+                                    <input id="endDate" name="endDate" type="text" class="datepicker" name="endDate" ng-required="true" ng-model="eventCtrl.event.endDate">
+                                    <label for="endDate">End Date</label>
+
+                                </div>
+                             </div>
+                        </div>
+
+                        <div class="row">
+                            <button type="submit" class="waves-effect waves-light btn-large" style="margin-top: 10px; left: 10px;">Create</button>
+                        </div>
+
+                    </form>
+            </div>
+            </div>
+    </div>
+    <div class="col m3">
+
+    </div>
+</div>

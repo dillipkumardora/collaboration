@@ -1,0 +1,68 @@
+<div class="row" ng-init="adminCtrl.manageJobs();">
+  
+        <div style="margin-top: 25px; margin-left: 25px;">
+            <h5>Manage Jobs here</h5>
+        </div>
+        <br /> <hr>
+
+        <div style="margin-left: 25px; margin-bottom: 250px;">
+
+             <div class="card hoverable" style="width: 1200px;" ng-repeat="job in adminCtrl.approvedJobList" >
+            
+            <div class="row">
+
+                <div class="col m9">
+
+                    <!-- Job's information will come here-->
+                    <div class="card-content">  
+                        <h5><b>{{job.companyName}}</b></h5>
+                        <h6>{{job.subTitle}}</h6>
+                        <b>About The Company</b>
+                        <p>{{job.about}}</p>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="row">
+                        
+                        <div class="col m4">
+                        <b>JOB PROFILE</b>
+                        <p>{{job.jobProfile}}</p>
+                        </div>
+                        
+                        <div class="col m4">
+                        <b>QUALIFICATION</b>
+                        <p>{{job.qualification}}</p>
+                        </div>
+                        
+                        <div class="col m4">
+                        <b>CONTACT INFO</b>
+                        <p>{{job.contactInfo}}</p>
+                        </div>
+                    
+                    </div>
+
+                </div>  <!-- Job's information will end here-->
+
+                <div class="col m3">    <!-- Employer's information will come here-->
+                    <div  style="padding-top: 50px;">
+                        
+                        <b>Employer Name:</b>&nbsp; &nbsp;{{job.username}}
+                        <b>Published On:</b>&nbsp; &nbsp;{{job.postDate | date : 'MMMM, d y'}}
+                        
+                        <div style="margin-top: 10px;">
+                            <button type="submit" class="waves-effect waves-light btn-large" >Edit</button>
+                            <button type="submit" class="waves-effect waves-light btn-large" >Delete</button>
+                        </div>
+                    </div>
+
+                </div>  <!-- Employer's information ends here-->
+
+            </div>
+          
+          </div>
+           
+    </div>
+
+    
+</div>

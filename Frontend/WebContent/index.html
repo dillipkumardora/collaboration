@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="codehub">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+
+    <title>Home Page</title>
+
+    <!--Import Google Icon Font-->
+    <link type="text/css" rel="stylesheet" href="assets/css/material-icon.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/Merriweather.css" />
+    <script src="https://use.fontawesome.com/9dea30e34b.js"></script>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/app.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/textAngular.css" />
+    <!--Bootstrap imports-->
+    <!--<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-theme.css" />-->
+    
+    <!--Import for module and route-->
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/materialize.js"></script>
+    <script type="text/javascript" src="assets/js/angular.js"></script>
+    <script type="text/javascript" src="assets/js/sockjs.js"></script>
+    <script type="text/javascript" src="assets/js/stomp.js"></script>
+    <script type="text/javascript" src="assets/js/lodash.js"></script>
+    <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular-cookies.js"></script>
+    <script type="text/javascript" src="assets/js/textAngular-rangy.min.js"></script>
+    <script type="text/javascript" src="assets/js/textAngular-sanitize.js"></script>
+    <script type="text/javascript" src="assets/js/textAngular.js"></script>
+    <script type="text/javascript" src="assets/js/textAngularSetup.js"></script>
+    
+    <script type="text/javascript" src="app/app.module.js"></script>
+    <script type="text/javascript" src="app/app.route.js"></script>
+
+    <!-- For Authentication module is here -->
+    <script type="text/javascript" src="app/components/authentication/authenticationFactory.js"></script>
+    <script type="text/javascript" src="app/components/authentication/authenticationController.js"></script>
+
+    <!-- For blog module is here -->
+    <script type="text/javascript" src="app/components/blogs/blogFactory.js"></script>
+    <script type="text/javascript" src="app/components/blogs/blogController.js"></script>
+
+    <!--For Forum module-->
+    <script type="text/javascript" src="app/components/forum/forumFactory.js"></script>
+    <script type="text/javascript" src="app/components/forum/forumController.js"></script>
+
+    <!--For user module -->
+    <script type="text/javascript" src="app/components/user/userFactory.js"></script>
+    <script type="text/javascript" src="app/components/user/userController.js"></script>
+
+     <!--For job module -->
+    <script type="text/javascript" src="app/components/jobs/jobFactory.js"></script>
+    <script type="text/javascript" src="app/components/jobs/jobController.js"></script>
+
+    <!--For event module -->
+    <script type="text/javascript" src="app/components/events/eventFactory.js"></script>
+    <script type="text/javascript" src="app/components/events/eventController.js"></script>
+
+    <!--For blog comment module -->
+    <script type="text/javascript" src="app/components/blogs/blogCommentFactory.js"></script>
+    <script type="text/javascript" src="app/components/blogs/blogCommentController.js"></script>
+
+    <!--For admin module -->
+    <script type="text/javascript" src="app/components/admin/adminFactory.js"></script>
+    <script type="text/javascript" src="app/components/admin/adminController.js"></script>
+
+     <!--For handling requests of users, blogs, forums, jobs and events -->
+    <script type="text/javascript" src="app/components/requests/requestFactory.js"></script>
+    <script type="text/javascript" src="app/components/requests/requestController.js"></script>
+
+    <!--For friend module -->
+    <script type="text/javascript" src="app/components/friends/friendFactory.js"></script>
+    <script type="text/javascript" src="app/components/friends/friendController.js"></script>
+
+    <!--For chat module -->
+    <script type="text/javascript" src="app/components/chat/chatFactory.js"></script>
+    <script type="text/javascript" src="app/components/chat/chatController.js"></script>
+
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+
+</head>
+
+<body ng-cloak class="ng-cloak">
+    <header>
+
+    <div ng-include="'app/shared/navbar.html'"></div>
+    <div ng-include="'app/shared/sidebar.html'"></div>
+    <div ng-include="'app/shared/quicklinks.html'"></div>
+    </header>
+     <!--Main Contain and injecting views -->
+    <main>
+    <div id="main">
+        
+         <!-- angular templating -->
+        <!-- this is where content will be injected -->
+
+         
+
+        <div ng-view>
+
+        
+        </div>
+    </main>
+    <footer>
+    <div ng-include="'app/shared/footer.html'"></div>
+    </footer>
+    </div>
+    </header>
+    <!--Import jQuery before materialize.js-->
+    
+    </main>
+</body>
+
+</html>

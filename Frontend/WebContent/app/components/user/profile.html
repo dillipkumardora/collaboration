@@ -1,0 +1,161 @@
+<div class="row" ng-init="userCtrl.fetchContain()">
+  <div class="col m9" >
+
+
+
+    <!-- Search bar comes here -->
+    <div  style="width: 900px; margin-left: 50px">
+      <form>
+        <div class="input-field item-search">
+          <input id="search" type="search" required style="display: inline" placeholder="Search for blogs, forums, events and jobs" ng-model="containSearch">
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons" >close</i>
+        </div>
+      </form>
+    </div>
+
+
+<!-- Main content starts here -->
+<div class="card-panel hoverable" style="width: 900px; margin-top: 25px; margin-left: 50px;">
+<div class="row">
+    <div class="col s12">
+    <!--Tab heads are here-->
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#blogs">TOP 5 Blogs</a></li>
+        <li class="tab col s3"><a href="#forums">TOP 3 Forums</a></li>
+        <li class="tab col s3"><a href="#jobs">TOP 3 Jobs</a></li>
+        <li class="tab col s3"><a href="#events">TOP 3 Events</a></li>
+      </ul>
+    </div>
+
+    <!-- All blogs will come here -->
+    <div id="blogs" class="col s12" style="margin-top: 10px;">
+
+      <div class="row" ng-repeat="blogs in userCtrl.contain.top5Blogs | filter : containSearch">
+        <div class="col s12 m7">
+          <div class="card hoverable" style="width: 800px;">
+            <span class="card-title" style="margin-left: 10px;"><a href="#!/blog/{{blogs.id}}" style=" color: rgba(0, 0, 0, 0.87);">{{blogs.name}}</a></span>
+            <div class="card-content">
+              <p class="truncate">{{blogs.description}}</p>
+            </div>
+            <div class="card-action">
+                    <a href="javascript:void(0)" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="views">Views {{blogs.noOfViews}}</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href="javascript:void(0)" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="likes">Likes {{blogs.noOfLikes}}</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href="javascript:void(0)" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="comments">Comments {{blogs.noOfComments}}</a>
+                    
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#!/blogs/all" class="center-align">View All</a>
+    </div>
+    
+    <!-- All forums will come here -->
+    <div id="forums" class="col s12">   
+
+       <div class="row">
+                <div class="col s12 m7">
+                    <div class="card hoverable" style="width: 800px;" ng-repeat="forums in userCtrl.contain.top3Forums | filter : containSearch">
+                        <span class="card-title" style="margin-left: 10px;"><a ng-href="#!/forum/{{forums.id}}" style=" color: rgba(0, 0, 0, 0.87);">{{forums.name}}</a></span>
+                        <div class="card-content">
+                        <p>{{forums.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+      
+       <a href="#!/forum/list" class="center-align">View All</a>
+      </div>
+    
+    <!-- All jobs will come here -->
+    <div id="jobs" class="col s12">
+            
+            <div class="card hoverable" style="width: inherit" ng-repeat="job in userCtrl.contain.top3Jobs | filter : containSearch">
+            
+              <div class="card-content">
+                <h5><b>{{job.companyName}}</b></h5>
+                <h6>{{job.subTitle}}</h6>
+                <b>About The Company</b>
+                <p>{{job.about}}</p>
+                <div>
+                <a ng-click="userCtrl.applyJob(job.id)" class="btn-floating halfway-fab waves-effect waves-light red tooltipped " data-position="bottom" data-delay="50" data-tooltip="APPLY" ><i class="material-icons" >add</i></a>
+                </div>
+                 <!--<div ng-if="userCtrl.hasApplied">
+                <a ng-click="userCtrl.applyJob(job.id)" class="btn-floating halfway-fab waves-effect waves-light red tooltipped disabled" data-position="bottom" data-delay="50" data-tooltip="APPLY" ><i class="material-icons" >add</i></a>
+                </div>-->
+              <hr>
+              <div class="row">
+                
+                <div class="col m4">
+                  <b>JOB PROFILE</b>
+                  <p>{{job.jobProfile}}</p>
+                </div>
+                 
+                 <div class="col m4">
+                  <b>QUALIFICATION</b>
+                  <p>{{job.qualification}}</p>
+                </div>
+                 
+                 <div class="col m4">
+                  <b>CONTACT INFO</b>
+                  <p>{{job.contactInfo}}</p>
+                </div>
+              
+              </div>
+              
+              </div>
+          
+          </div>
+        
+          <a href="#!/jobs/list" class="center-align">View All</a>
+      </div>
+      
+      <!-- All events will come here -->
+      <div id="events" class="col s12">
+
+        <div class="card hoverable" style="width: inherit;" ng-repeat="event in userCtrl.contain.top3Events | filter : containSearch">
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4 ">{{event.name}}</span>
+                    <p style="font-size: 13px;">Organised by {{event.username}} | {{event.postDate | date: 'MMMM, d y'}}</p><br>
+                    <p>{{event.description}}</p>
+                    <a ng-click="userCtrl.joinEvent(event.id);" class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="JOIN EVENT"><i class="material-icons">add</i></a>
+                    <br>
+                    <div class="row">
+                    <div class="col m6">
+                        <p><b>Venue</b></p>
+                        <p>{{event.venue}}</p>
+                    </div>
+                    <div class="col m6">
+                        <p><b>Start Date</b> {{event.startDate | date: 'MMMM, d y'}}</p>
+                        <p><b>End Date</b> {{event.endDate | date: 'MMMM, d y'}}</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        <a href="#!/events/list" class="center-align">View All</a>
+      </div>
+      
+  </div>
+  
+</div>
+
+    
+  </div>
+
+  
+
+  <div class="col m3">
+        <div ng-include="'app/shared/rightSide.html'"></div>
+
+         <!-- Button to view all friends -->
+        <div style="margin-bottom: 50px;">
+          <a href="#!/member/list" type="submit" class="waves-effect waves-light btn-large">LOOK FOR FRIENDS</a>
+        </div>
+    </div>
+            
+  </div>
+</div>

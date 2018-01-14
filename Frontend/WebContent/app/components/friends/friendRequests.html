@@ -1,0 +1,34 @@
+<div style="margin-left: 25px;" ng-init="friendCtrl.fetchRequest()">
+    <h5>YOU HAVE {{friendCtrl.friendRequestsCount}} NEW FRIEND REQUESTS</h5>
+</div>
+<br />
+<hr style="width: 1300px;" >
+
+ <div>
+        <div class="row">
+            <div class="col s3" ng-repeat="friend in friendCtrl.friendRequests">
+                <div class="card" >
+                    <div class="row">
+                        <div class="col s3" style="margin-top: 10px;">
+                             <img src="assets/img/{{friend.profile}}" alt="" class="square" width="120px;" height="120px;">
+                        </div>
+                        <div class="col s7 offset-s2" style="margin-top: 10px; margin-bottom: 10px;">
+                            <b><a href="#!/user/profile/user.id" style="color: #000;">{{friend.firstname}} {{friend.lastname}}</a></b>
+                            <p style="margin-top: 0px; margin-bottom: 0px;">{{friend.username}}</p>
+                            <p style="margin-top: 0px; margin-bottom: 0px;">November 23, 1994</p>
+                            <p ng-if="friend.gender == 'M'" style="margin-top: 0px; margin-bottom: 0px;">Male</p>
+                            <p ng-if="friend.gender == 'F'" style="margin-top: 0px; margin-bottom: 0px;">Female</p>
+                        </div>
+                    </div>
+                     <div style="margin-top: 10px; margin-left: 10px; padding-bottom: 10px;">
+                             <button class="teal darken-1 btn" ng-click="friendCtrl.approveRequest(friend.id)">APPROVE</button>
+                             <button class="red btn" ng-click="friendCtrl.sendRequest(user.id)" style="margin-top: 5px;">REJECT</button>
+                     </div>
+                </div>
+            </div>
+
+            
+           
+            
+        </div>
+    </div>

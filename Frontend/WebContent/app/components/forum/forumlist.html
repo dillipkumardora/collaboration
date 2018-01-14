@@ -1,0 +1,66 @@
+<div class="row" ng-init="forCtrl.fetchForums()">
+    <div class="col m9">
+        <div style="margin-bottom: 50px;">
+             <div class="col s12" style="margin-top: 25px;">
+            <a href="#!/user" class="breadcrumb">Home</a>
+            <a href="#!/forum/list" class="breadcrumb">Forum List</a>
+        </div>
+            <h4>Forums List</h4>
+
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="card hoverable" style="width: 900px;" ng-repeat="forums in forCtrl.forums | orderBy : 'id' : reverse">
+                        <span class="card-title" style="margin-left: 10px;"><a ng-href="#!/forum/{{forums.id}}" style=" color: rgba(0, 0, 0, 0.87);">{{forums.name}}</a></span>
+                        <div class="card-content">
+                        <p>{{forums.description}}</p>
+                        </div>
+                        <div class="card-action">
+                        <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Join Forum"><i class="material-icons">add</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+        </div>
+    </div>
+    <div class="col m3" style="margin-bottom: 50px;">
+        <div ng-include="'app/shared/rightSide.html'"></div>
+
+        <div style="margin: 25px auto 0 auto; " ng-if="user.role != 'User' && user.role != 'Employer'">
+            <button data-target="category" class="waves-effect waves-light btn-large"><i class="material-icons right">question_answer</i>CREATE FORUM</a>
+        </div>
+
+         <div id="category" class="modal">
+            <div class="modal-content">
+              <h4>Create New Forum</h4>
+               <div class="row">
+                    <form id="newForum" name="newForum" ng-submit="forCtrl.addForum()" class="col s12" style="padding-bottom: 40px;">
+                    <input type="hidden" ng-model="forCtrl.Forum.id" />
+
+                        <!--Category name will come here-->
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input id="name" type="text" class="validate" data-length="50" ng-model="forCtrl.Forum.name">
+                            <label for="title">Forum Name</label>
+                            </div>
+                        </div>
+
+                        <!--Category description will come here-->
+                         <div class="row" >
+                              <div class="input-field col s12">
+                                  <textarea id="description" class="materialize-textarea" ng-model="forCtrl.Forum.description"></textarea>
+                                  <label for="description">Forum Description</label>
+                              </div> 
+                        </div>
+
+                        <!--Submit button will come here-->
+                         <div class="row">
+                            <button type="submit" class="waves-effect waves-light btn-large" style="margin-top: 10px; left: 10px;">Create</button>
+                        </div>
+
+                    </form>
+               </div>
+            </div>
+         </div>
+    </div>
+</div>

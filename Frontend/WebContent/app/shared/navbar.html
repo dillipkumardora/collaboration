@@ -1,0 +1,135 @@
+<div ng-if="authenticated">
+<nav>
+    <div class="nav-wrapper teal lighten-2">
+
+      <!-- For toggling sidebar -->
+      <a data-href="#" href="javascript:void(0)" data-activates="slide-out" class="side-collapse left"  style="display: inline">
+      <i class="material-icons" style=" margin-left: 10px;">menu</i></a>
+      <!-- Navbar display of brand image -->
+      <a href="#!/user" class="brand-logo">DKDITHub</a>
+      
+      
+      <ul id="nav-mobile">
+        <!-- Navbar display of  search bar -->
+        <li>
+          <div class="input-field left" style="margin-left: 200px">
+                <input id="search" type="search" required style="display: inline; width: 300px" placeholder="Search for friends">
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i id="close-search" class="material-icons" >close</i>
+                
+          </div>
+        </li>
+
+        <!-- Manage button for admin -->
+        <li>
+          <div style=" display: inline;">
+             <a class='dropdown-button' data-activates='manage' ng-if="user.role == 'Super_Admin' || user.role == 'Admin'">Manage</a>
+
+              <!-- Dropdown Structure -->
+              <ul id='manage' class='dropdown-content'>
+                <li><a href="#!/manage/blogs">Blogs</a></li>
+                <li><a href="#!/manage/forums">Forums</a></li>
+                <li><a href="#!/manage/jobs">Jobs</a></li>
+                <li><a href="#!/manage/events">Events</a></li>
+             <li><a href="#!/manage/users">Users</a></li>
+
+               </li>
+                
+              </ul>
+          </div>
+        </li>
+
+        <!-- requests button for admin -->
+        <li>
+          <div style=" display: inline;">
+             <a class='dropdown-button' data-activates='request' ng-if="user.role == 'Super_Admin' || user.role == 'Admin'">Requests</a>
+
+              <!-- Dropdown Structure -->
+              <ul id='request' class='dropdown-content'>
+                <li><a href="#!/requests/blogs">Blogs</a></li>
+                <li><a href="#!/requests/forums">Forums</a></li>
+                <li><a href="#!/requests/jobs">Jobs</a></li>
+                <li><a href="#!/requests/events">Events</a></li>
+                <li><a href="#!/requests/users" >Users</a></li>
+                
+              </ul>
+          </div>
+        </li>
+
+      </ul>
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+         <li>
+          <a href="#!/user" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="home"> <i class="material-icons" style="display: inline;">home</i></a>
+        </li>
+
+        <li>
+          <div style=" display: inline;">
+             <a class='news-button' data-activates='new'>What's new? </a>
+
+              <!-- Dropdown Structure -->
+              <ul id='new' class='dropdown-content' style="width: 230px;">
+                <li><a href="#!/user/friendRequest">Friend Requests</a></li>
+                <li><a href="#!">Messages</a></li>
+                <li><a href="#!">Notifications</a></li>
+                
+              </ul>
+          </div>
+        </li>
+
+        <!-- Navbar display of profile and settings -->
+        <li  style="margin-right: 20px;">
+          <a style="height: 65px;" class="profile-button" data-activates='profile'>
+            <img ng-src="assets/img/{{user.profile}}" alt="" class="square" width="40px;" style="margin-right: 10px; margin-top: 10px;" >
+          </a>
+        
+          <!-- Dropdown Structure -->
+              <ul id='profile' class='dropdown-content'  style="width: 100px; position: absolute; left: 11500px; width: 200px;">
+                <li><a href="#!" ><big>Logged in as:<big><br><small>{{user.username}}</small></a></li>
+                <li><a href="#!/user/profile/{{user.id}}">View Profile</a></li>
+                <li class="divider"></li>
+                <li><a href="#!"ng-click="logout()">Log Out</a></li>
+                
+              </ul>
+        
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    <!-- Side nav options -->
+    <ul id="slide-out" class="side-nav">
+    <li><div class="userView">
+      <div class="background">
+        <img src="assets/img/background.png">
+      </div>
+      <a href="#!user/profile"><img  ng-src="assets/img/{{user.profile}}" class="circle"></a>
+      <a href="#!user/profile"><span class="white-text name"><big>{{user.username}}</big></span></a>
+      <a href="#!user/profile"><span class="white-text name" style="margin-top: 5px; margin-bottom: 5px;">{{user.firstname}}&nbsp;{{user.lastname}}</span></a>
+    </div></li>
+    <li><a href="#!">My Stuff</a></li>
+
+    <li><a href="#!/user/profile"><i class="material-icons">perm_identity</i>My Profile</a></li>
+    <li><a href="#!"><i class="material-icons">supervisor_account</i>My Friends</a></li>
+    <li><a href="#!"><i class="material-icons">description</i>My Blogs</a></li>
+    <li><a href="#!"><i class="material-icons">question_answer</i>Joined Forums</a></li>
+    <li><a href="#!"><i class="material-icons">work</i>Jobs Applied</a></li>
+    <li><a href="#!"><i class="material-icons">today</i>Events Joined</a></li>
+
+    <!--For super admin, admin and Employers -->
+    <li ng-if="user.role == 'Super_Admin' || user.role == 'Admin' || user.role == 'Employer'"><a href="#!"><i class="material-icons">work</i>My Jobs</a></li>
+    <li ng-if="user.role == 'Super_Admin' || user.role == 'Admin' || user.role == 'Employer'"><a href="#!"><i class="material-icons">today</i>My Events</a></li>
+
+    <li><a href="#!">Work Shop</a></li>
+
+    <li><a href="#!/blog/new"><i class="material-icons">description</i>Create new Blog</a></li>
+    <li ng-if="user.role != 'User' && user.role != 'Employer'"><a href="#!/forum/list"><i class="material-icons">question_answer</i>Create new Forums</a></li>
+
+    <!--For super admin, admin and Employers -->
+    <li ng-if="user.role == 'Super_Admin' || user.role == 'Admin' || user.role == 'Employer'"><a href="#!/job/new"><i class="material-icons">work</i>Create new Job</a></li>
+    <li ng-if="user.role == 'Super_Admin' || user.role == 'Admin' || user.role == 'Employer'"><a href="#!/event/new"><i class="material-icons">today</i>Create new Event</a></li>
+    
+  </ul>
+
+</div>

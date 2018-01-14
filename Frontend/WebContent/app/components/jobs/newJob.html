@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col m9">
+       <div class="card hoverable" style="margin-bottom: 25px;">
+            <h3 style="padding-left: 20px; padding-top: 20px;">Create Job</h3>
+                <div class="row" >
+                 <form id="newJob" name="newJob" ng-submit="jobCtrl.addJob()" class="col s12" style="padding-bottom: 40px;">
+                 <input type="hidden" ng-model="jobCtrl.job.id" />
+
+
+                      <!--Name of company will come here-->
+                        <div class="row">
+                            <div class="input-field col s12">
+                              <input id="company-name" type="text" class="validate" data-length="50" ng-model="jobCtrl.job.companyName">
+                              <label for="company-name">Company Name</label>
+                              <p style="margin-top: 0; margin-bottom: 0; font-size: 12px;">Eg. JP Morgan, Accentur etc.</p>
+                            </div>
+                        </div>
+
+                        <!-- Sub header will come here-->
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input id="subheader" type="text" class="validate" data-length="100" ng-model="jobCtrl.job.subTitle">
+                            <label for="subheader">Subheader</label>
+                            <p style="margin-top: 0; margin-bottom: 0; font-size: 12px;">Eg. Post for senior software Engineering</p>
+                            </div>
+                        </div>
+
+                        <!--About section will come here-->
+                        <div class="row">
+                            <div class="input-field col s12">
+                              <textarea id="about" class="materialize-textarea" data-length="800" ng-model="jobCtrl.job.about"></textarea>
+                              <label for="about">Tell something about your company</label>
+                              <p style="margin-top: 0; margin-bottom: 0; font-size: 12px;">Describe what your company does to help seekers make better decision</p>
+                            </div>
+                        </div>
+
+                        <!-- Jo Profile and qualification will come here -->
+                         <div class="row" >
+                          <!-- Job Profile -->
+                           <div class="col s6">
+                              <div class="input-field col s12">
+                                  <textarea id="profile" class="materialize-textarea" data-length="500" ng-model="jobCtrl.job.jobProfile"></textarea>
+                                  <label for="profile">Explain Job Profile</label>
+                              </div> 
+                           </div>
+
+                           <!-- Qualification -->
+                           <div class="col s6">
+                               <div class="input-field col s12">
+                                  <textarea id="qualification" class="materialize-textarea" data-length="500" ng-model="jobCtrl.job.qualification"></textarea>
+                                  <label for="qualification">Describe qualification required</label>
+                               </div> 
+                           </div> 
+                        </div>
+
+                        <!-- Contact Info -->
+                         <div class="row" >
+                            <div class="input-field col s12">
+                                <textarea id="contact-info" class="materialize-textarea"  data-length="1000" ng-model="jobCtrl.job.contactInfo"></textarea>
+                                <label for="contact-info">Contact Information</label>
+                                <p style="margin-top: 0; margin-bottom: 0; font-size: 12px;">Eg. Postal address, email address or contact number of concern person</p>
+                            </div>  
+                        </div>
+
+                         <div class="row">
+                            <button type="submit" class="waves-effect waves-light btn-large" style="margin-top: 10px; left: 10px;">Create</button>
+                        </div>
+
+                    </form>
+            </div>
+            </div>
+    </div>
+    <div class="col m3">
+    </div>
+</div>

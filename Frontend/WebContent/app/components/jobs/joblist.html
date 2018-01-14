@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col m9">
+
+         <div class="col s12" style="margin-top: 25px;">
+            <a href="#!/user" class="breadcrumb">Home</a>
+            <a href="#!/jobs/list" class="breadcrumb">Job List</a>
+        </div>
+
+        <div style="margin-top: 100px">
+         
+          <div class="card hoverable" style="width: inherit" ng-repeat="job in jobCtrl.joblist">
+            
+            <div class="card-content">
+              <h5><b>{{job.companyName}}</b></h5>
+              <h6>{{job.subTitle}}</h6>
+              <b>About The Company</b>
+              <p>{{job.about}}</p>
+              <a ng-click="jobCtrl.applyJob(job.id)" class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="APPLY"><i class="material-icons">add</i></a>
+            </div>
+            <hr>
+            <div class="row">
+                
+                <div class="col m4">
+                  <b>JOB PROFILE</b>
+                  <p>{{job.jobProfile}}</p>
+                </div>
+                 
+                 <div class="col m4">
+                  <b>QUALIFICATION</b>
+                  <p>{{job.qualification}}</p>
+                </div>
+                 
+                 <div class="col m4">
+                  <b>CONTACT INFO</b>
+                  <p>{{job.contactInfo}}</p>
+                </div>
+              
+              </div>
+          
+          </div>
+
+        
+           
+
+          
+        </div>
+
+         <!--Pagination will come here -->
+                  <!--<ul class="pagination center-align " style="padding-bottom: 40px;">
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li>
+                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                </ul>-->
+
+    </div>
+    <div class="col m3">
+        <div ng-include="'app/shared/rightSide.html'"></div>
+
+        <div style="margin: 25px auto 0 auto;" ng-if="user.role != 'User'">
+            <a href="#!/job/new" class="waves-effect waves-light btn-large"><i class="material-icons right">work</i>CREATE JOB</a>
+        </div>
+
+         
+               
+            
+    </div>
+</div>
